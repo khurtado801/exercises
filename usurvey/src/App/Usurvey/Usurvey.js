@@ -19,7 +19,7 @@ class Usurvey extends Component {
     
       this.state = {
          uid: uuid.v1(),
-         studentName: '',
+         studentName: 'Dude',
          answers: {
              answer1: '',
              answer2: '',
@@ -27,6 +27,13 @@ class Usurvey extends Component {
          },
          isSubmitted: false
       };
+    }
+
+    nameSubmit = (event) => {
+        let studentName = this.refs.name.value;
+        this.setState({ studentName: studentName }, function () {
+            console.log('this.state', this.state);
+        })
     }
     
     render () {
@@ -38,16 +45,21 @@ class Usurvey extends Component {
             studentName = 
             (<div>
                 <h1>Hello, what's your name? </h1>
-                <form>
+                <form onSubmit={this.nameSubmit} >
                     <input type="text" placeholder="Enter your name" ref="name" />
                 </form>
-             </div>)
+             </div>);
+             questions = ''
+        } else if (this.state.studentName !== '' && this.state.isSubmitted === false) {
+            studentName = <h1>Welcome to U-Survey, { this.state.studentName } </h1>;
+                questions = <p>Question goes here</p>;
         }
 
         return (
             <div>
                 { studentName }
                 -------------------------------------
+                { questions }
             </div>
         )
     }
