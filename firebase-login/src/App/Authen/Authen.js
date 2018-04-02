@@ -15,14 +15,35 @@ let config = {
 class Authen extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {};
+        this.state = {
+            err: ''
+        };
+    }
+
+    login = (event) => {
+        const email = this.refs.email.value;
+        const password = this.refs.password.value;
+        console.log(email, password);
+
+        const auth = firebase.auth();
+
+        const promise = auth.signInWithEmailAndPassword(email, password);
+        promise.catch(e => {
+            let err = e.message;
+            console.log(err);
+            this.setState({ err: err })
+        });
     }
 
     render() {
         return (
             <div>
                 <input id="email" ref="email" type="email" placeholder="Enter your email" /><br />
-                <input id="pass" ref="email" type="password" placeholder="Enter your password" /><br />
+                <input id="pass" ref="password" type="password" placeholder="Enter your password" /><br />
+                <p>{this.state.err}</p>
+                <button onClick={this.login} >Log in</button>
+                <button>Sign Up</button>
+                <button>Log Out</button>
             </div>
         );
     }
