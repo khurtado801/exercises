@@ -35,6 +35,33 @@ class Authen extends React.Component {
         });
     }
 
+    signup = () => {
+        const email = this.refs.email.value;
+        const password = this.refs.password.value;
+        console.log(email, password);
+
+        const auth = firebase.auth();
+
+        const promise = auth.createUserWithEmailAndPassword(email, password);
+        promise
+        // 'Then' is for something good
+        .then(user => {
+            let err = 'Welcome ' + user.email;
+            // Make entry for user in database
+            firebase.database().ref('users/'+user.uid).set({
+                email: user.email
+            });
+            console.log(user);
+            this.setState({err: err});
+        });
+        promise
+        .catch(e => {
+            let err = e.message;
+            console.log(err);
+            this.setState({err: err});
+        })
+    }
+
     render() {
         return (
             <div>
@@ -42,8 +69,8 @@ class Authen extends React.Component {
                 <input id="pass" ref="password" type="password" placeholder="Enter your password" /><br />
                 <p>{this.state.err}</p>
                 <button onClick={this.login} >Log in</button>
-                <button>Sign Up</button>
-                <button>Log Out</button>
+                <button onClick={this.signup} >Sign Up</button>
+                <button onClick={this.logout} >Log Out</button>
             </div>
         );
     }
