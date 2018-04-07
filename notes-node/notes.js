@@ -1,6 +1,10 @@
 console.log('Starting mode.js');
 
-module.exports.age = 25;
+module.exports.addNote = () => {
+    console.log('addNote');
+    return 'New note';
+};
 
-// ES6 module
-// export const age = 25;
+module.exports.add = (a, b) => {
+    return a + b;
+}

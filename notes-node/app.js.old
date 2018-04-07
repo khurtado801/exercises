@@ -1,0 +1,28 @@
+console.log('Starting app.');
+
+const fs = require('fs');
+const os = require('os');
+const _ = require('lodash');
+const notes = require('./notes.js')
+
+// A third parameter is need for appendFile, in this option we use a call-back as the third parameter
+// fs.appendFile('greetings.txt', 'Hello, World! This is option 1.', function (err) {
+//     if (err) {
+//         console.log('Unable to write to file');
+//     }
+// });
+
+// let res = notes.addNote();
+// console.log(res);
+
+// console.log('Result:', notes.add(9, -2));
+
+// let user = os.userInfo();
+// A third parameter is need for appendFile, this time we call appendFileSync
+// fs.appendFileSync('greetings.txt', `Hello ${user.username}! You are ${notes.age}.` );
+
+// console.log(_.isString(1));
+// console.log(_.isString('Kenny'));
+
+let filterArray = _.uniq(['Kenny', 1, 'Kenny', 1, 2, 3, 4]);
+console.log(filterArray);

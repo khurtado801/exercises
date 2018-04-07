@@ -1,17 +1,22 @@
 console.log('Starting app.');
 
 const fs = require('fs');
-const os = require('os');
+const _ = require('lodash');
 const notes = require('./notes.js')
 
-// A third parameter is need for appendFile, in this option we use a call-back as the third parameter
-// fs.appendFile('greetings.txt', 'Hello, World! This is option 1.', function (err) {
-//     if (err) {
-//         console.log('Unable to write to file');
-//     }
-// });
 
-let user = os.userInfo();
+let command = process.argv[2];
+console.log('Command: ', command);
+console.log(process.argv);
 
-// A third parameter is need for appendFile, this time we call appendFileSync
-fs.appendFileSync('greetings.txt', `Hello ${user.username}!` );
+// if (command === 'add') {
+//     console.log('Adding new note');
+// } else if (command === 'list') {
+//     console.log('Listing all notes');
+// } else if (command === 'read') {
+//     console.log('Reading note');
+// } else if (command === 'remove') {
+//     console.log("Removing note")
+// } else {
+//     console.log('Command not found')
+// }
