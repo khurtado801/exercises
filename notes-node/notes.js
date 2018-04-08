@@ -1,10 +1,25 @@
 console.log('Starting mode.js');
 
-module.exports.addNote = () => {
-    console.log('addNote');
-    return 'New note';
+let addNote = (title, body) => {
+    console.log('Adding note', title, body);
 };
 
-module.exports.add = (a, b) => {
-    return a + b;
+let getAll = () => {
+    console.log('Getting all notes');
 }
+
+let getNote = (title) => {
+    console.log('Getting note', title);
+}
+
+let removeNote = (title) => {
+    console.log('Removing note', title)
+}
+
+module.exports = {
+    // Export addNote, set the attribute addNote to the value of function addNote
+    addNote: addNote,
+    getAll: getAll,
+    getNote: getNote,
+    removeNote: removeNote
+};
