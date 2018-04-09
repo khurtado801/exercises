@@ -7,7 +7,8 @@ const yargs = require('yargs');
 const notes = require('./notes.js')
 
 const argv = yargs.argv;
-let command = process.argv[2];
+// Set command equal to argv and grab the first element in array which is the title
+let command = argv._[0];
 console.log('Command: ', command);
 console.log('Process', process.argv);
 console.log('Yargs', argv);
