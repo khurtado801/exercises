@@ -15,7 +15,16 @@ console.log('Yargs', argv);
 
 if (command === 'add') {
     // Call addNotes and pass in title and body
-    notes.addNote(argv.title, argv.body)
+    let note = notes.addNote(argv.title, argv.body)
+    // Check if note object is defined
+    if (note) {
+        console.log('Note created...')
+        console.log('--');
+        console.log(`Title: ${note.title}`)
+        console.log(`Body: ${note.body}`)
+    } else {
+        console.log('Note title taken...')
+    }
 } else if (command === 'list') {
     // Call getAll to return all notes, no arguments needed because it will return all notes
     notes.getAll();

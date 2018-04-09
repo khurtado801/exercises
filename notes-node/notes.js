@@ -2,24 +2,30 @@ console.log('Starting mode.js');
 
 const fs = require('fs');
 
+let fetchNotes = () => {
+    try {
+        // Read contents of notes-data.json, which is a string, and save to notesString
+        let notesString = fs.readFileSync('notes-data.json');
+        // Parse file we read to convert and return it to function
+        return JSON.parse(notesString);
+
+    // Catch block error argument variable 'e'
+    } catch (e) {
+        return [];
+    }
+};
+
+let saveNotes = (notes) => {
+    // Update the file named notes-data.json with content to be saved json.stringify(notes) 
+    fs.writeFileSync('notes-data.json', JSON.stringify(notes));
+}
+
 let addNote = (title, body) => {
-    let notes = [];
+    let notes = fetchNotes();
     let note = {
         title: title,
         body: body
     };
-
-    
-    try {
-        // Read contents of notes-data.json, which is a string, and save to notesString
-        let notesString = fs.readFileSync('notes-data.json');
-        // Parse file we read to convert to object and save in notes
-        notes = JSON.parse(notesString);
-
-    // Catch block error argument variable 'e'
-    } catch (e) {
-
-    }
 
     // Check notes array for duplicate note...
     let duplicateNotes = notes.filter((note) => {
@@ -34,8 +40,9 @@ let addNote = (title, body) => {
     if (duplicateNotes.length === 0) {
         // Add note to notes array at the end using push
         notes.push(note);
-        // Update the file named notes-data.json with content to be saved json.stringify(notes) 
-        fs.writeFileSync('notes-data.json', JSON.stringify(notes));
+        saveNotes(notes);
+        // Return note to app.js 
+        return note;
     }
 };
 
@@ -48,7 +55,22 @@ let getNote = (title) => {
 }
 
 let removeNote = (title) => {
-    console.log('Removing note', title)
+    // Set notes equal to result of fetchNotes call
+    let notes = fetchNotes();
+    // Filter out notes...
+    let filteredNotes = notes.filter((note) => {
+        // Return notes where title is not equal to argument passed in
+        return note.title !== title
+    })
+    if (filteredNotes.length < notes.length) {
+        console.log('--');
+        console.log('The note has been removed...')
+    } else {
+        console.log('--');
+        console.log('Nothing to remove...')
+    }
+    // Call savedNotes with updated notes as argument
+    saveNotes(filteredNotes);
 }
 
 module.exports = {
