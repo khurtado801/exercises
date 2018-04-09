@@ -1,5 +1,4 @@
 caesar = (str, key) => {
-    let strInput = str.toLowerCase();
     let result = '';
     for (let i = 0; i < strInput.length; i++) {
         if(str.charCodeAt(i) === 32) {
