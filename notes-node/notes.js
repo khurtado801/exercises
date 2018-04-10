@@ -48,10 +48,18 @@ let addNote = (title, body) => {
 
 let getAll = () => {
     console.log('Getting all notes');
+
 }
 
 let getNote = (title) => {
-    console.log('Getting note', title);
+    let notes = fetchNotes();
+        // return all notes
+        // let filteredNotes = notes.filter((note) => {
+        //     return note.title === title;
+        // })
+        let filteredNotes = notes.filter((note) => note.title === title)
+        // Return first item in filteredNotes array
+        return filteredNotes[0];
 }
 
 let removeNote = (title) => {
@@ -60,17 +68,27 @@ let removeNote = (title) => {
     // Filter out notes...
     let filteredNotes = notes.filter((note) => {
         // Return notes where title is not equal to argument passed in
-        return note.title !== title
+        // return note.title !== title
     })
-    if (filteredNotes.length < notes.length) {
-        console.log('--');
-        console.log('The note has been removed...')
-    } else {
-        console.log('--');
-        console.log('Nothing to remove...')
-    }
+    // if (filteredNotes.length < notes.length) {
+    //     console.log('--');
+    //     console.log('The note has been removed...')
+    // } else {
+    //     console.log('--');
+    //     console.log('Nothing to remove...')
+    // }
     // Call savedNotes with updated notes as argument
     saveNotes(filteredNotes);
+
+
+    // If not equal return true
+    return notes.length !== filteredNotes.length;
+}
+
+let logNote = (note) => {
+    console.log('--');
+    console.log(`Title: ${note.title}`)
+    console.log(`Body: ${note.body}`)
 }
 
 module.exports = {
@@ -78,5 +96,6 @@ module.exports = {
     addNote: addNote,
     getAll: getAll,
     getNote: getNote,
-    removeNote: removeNote
+    removeNote: removeNote,
+    logNote: logNote
 };

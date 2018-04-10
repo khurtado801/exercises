@@ -19,9 +19,7 @@ if (command === 'add') {
     // Check if note object is defined
     if (note) {
         console.log('Note created...')
-        console.log('--');
-        console.log(`Title: ${note.title}`)
-        console.log(`Body: ${note.body}`)
+        notes.logNote(note);
     } else {
         console.log('Note title taken...')
     }
@@ -30,10 +28,20 @@ if (command === 'add') {
     notes.getAll();
 } else if (command === 'read') {
     // getNote to get a note using title as argument
-    notes.getNote(argv.title)
+    let note = notes.getNote(argv.title)
+    // Check if note object is defined
+    if(note) {
+        console.log('Note found...')
+        notes.logNote(note);
+    } else {
+        console.log('Note not found...')
+    }
 } else if (command === 'remove') {
     // removeNote method to remove note, takes title as argument
-    notes.removeNote(argv.title)
+    let noteRemoved = notes.removeNote(argv.title);
+    // Truthy is note not found
+    let message = noteRemoved ? 'Note was removed...' : 'Note not found...'
+    console.log(message);
 } else {
     console.log('Command not found')
 }
