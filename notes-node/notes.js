@@ -1,5 +1,3 @@
-console.log('Starting mode.js');
-
 const fs = require('fs');
 
 let fetchNotes = () => {
@@ -47,7 +45,7 @@ let addNote = (title, body) => {
 };
 
 let getAll = () => {
-    return fetchNotes;
+    return fetchNotes();
 }
 
 let getNote = (title) => {

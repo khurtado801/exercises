@@ -1,17 +1,27 @@
-console.log('Starting app.');
-
 const fs = require('fs');
 const _ = require('lodash');
 const yargs = require('yargs');
 
 const notes = require('./notes.js')
 
-const argv = yargs.argv;
+const argv = yargs
+    .command('add', 'Add a new note', {
+        title: {
+            describe: 'Title of note',
+            demand: true,
+            alias: 't'
+        },
+        body: {
+            describe: 'Body of note',
+            demand: true,
+            alias: 'b'
+        }
+    })
+    .help()
+    .argv;
 // Set command equal to argv and grab the first element in array which is the title
 let command = argv._[0];
-console.log('Command: ', command);
-console.log('Process', process.argv);
-console.log('Yargs', argv);
+
 
 if (command === 'add') {
     // Call addNotes and pass in title and body
@@ -25,12 +35,17 @@ if (command === 'add') {
     }
 } else if (command === 'list') {
     // Call getAll to return all notes, no arguments needed because it will return all notes
-    notes.getAll();
+    let allNotes = notes.getAll();
+    console.log(`Printing ${allNotes.length} note(s).`);
+    // allNotes.forEach((note) => {
+    //     notes.logNote(note);
+    // })
+    allNotes.forEach((note) => notes.logNote(note));
 } else if (command === 'read') {
     // getNote to get a note using title as argument
     let note = notes.getNote(argv.title)
     // Check if note object is defined
-    if(note) {
+    if (note) {
         console.log('Note found...')
         notes.logNote(note);
     } else {
