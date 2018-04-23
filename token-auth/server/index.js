@@ -19,7 +19,12 @@ mongoose.connect("mongodb://localhost/todo-auth",
     }
 );
 
+// Make the app use the express-jwt authentication middleware on anything starting with "/api"
 app.use("/api", expressJwt({secret: process.env.SECRET}));
+// Add `/api` before your existing `app.use` of the todo routes.
+// This way, it must go through the express-jwt middleware before
+// accessing any todos, making sure we can reference the "currently
+// logged-in user" in our todo routes.
 app.use("/api/todo", require("./routes/todo"));
 app.use("/api/profile", require("./routes/profile"));
 

@@ -3,7 +3,9 @@ const todoRouter = express.Router();
 const Todo = require("../models/todo");
 
 todoRouter.get("/", (req, res) => {
-    Todo.find({ user: req.user._id }, (err, todos) => {
+    // Addition: include filtering criteria to the find so that it only finds 
+    // todo items with a 'user' property with the current user's id.
+    todo.find({ user: req.user._id }, (err, todos) => {
         if (err) return res.status(500).send(err);
         return res.send(todos);
     });
@@ -11,6 +13,7 @@ todoRouter.get("/", (req, res) => {
 
 todoRouter.post("/", (req, res) => {
     const todo = new Todo(req.body);
+    // Set the user property of a todo to req.user._id (logged-in user's `_id` property)
     todo.user = req.user._id;
     todo.save(function (err, newTodo) {
         if (err) return res.status(500).send(err);
