@@ -1,15 +1,10 @@
 const request = require('request');
 
-/**
- * Request function takes two arguments. The first argument is options object, 
- * You can configure all sorts of info in the options object
- * Second argument is call-back function. This is called once the data comes back
- * from the HTTP endpoint. In our case it will be called once the json data
- * comes back into the Node application
- */
 request({
-    url: 'https://maps.googleapis.com/maps/api/geocode/json?address=1301%20lombard%20st%20philadelphia&key=AIzaSyD52Jc8l2IZc_86bilqqD66XkldvOVVlVo',
-    json: true // This tells the request function that the data coming back will be json data and take json string and convert to object 
+ url: 'https://maps.googleapis.com/maps/api/geocode/json?address=2499%20Douglas%20st%20utah&key=AIzaSyD52Jc8l2IZc_86bilqqD66XkldvOVVlVo',
+ json: true
 }, (error, response, body) => {
-    console.log(body);
-})
+    console.log(`Address:  ${body.results[0].formatted_address}`); // Template strings like 'Address: ${}' used for formatting
+    console.log(`Latitude: ${body.results[0].geometry.location.lat}`);
+    console.log(`Longitude: ${body.results[0].geometry.location.lng}`);
+});
