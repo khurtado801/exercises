@@ -15,15 +15,15 @@ request({
     if (error) { //check if error object exists and run code in block if error exists
         callback('Unable to connect to Google servers...')
     } else if(body.status === 'ZERO_RESULTS') { // Check status property, if status property is ZERO_RESULTS
-        callback('Unable to find that address...')
-    } else if(body.status === 'OK') {
-        callback(undefined, {
-            address: body.results[0].formatted_address,
-            latitude: body.results[0].geometry.location.lat,
-            longitute: body.results[0].geometry.location.lng
-        });
+        callback('Unable to find that address.');
+    } else if (body.status === 'OK') {
+      callback(undefined, {
+        address: body.results[0].formatted_address,
+        latitude: body.results[0].geometry.location.lat,
+        longitude: body.results[0].geometry.location.lng
+      });
     }
-});
+  });
 };
 
 module.exports.geocodeAddress = geocodeAddress;
