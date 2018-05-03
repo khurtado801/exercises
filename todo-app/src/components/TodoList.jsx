@@ -1,7 +1,7 @@
 // src/components/TodoApp/TodoList
 
 import React, { Component } from 'react';
-import Todo from './Todo/index';
+import Todo from './Todo';
 
 class TodoList extends Component {
     render() {

@@ -1,7 +1,12 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import TodoApp from './components/TodoApp/index';
+import { render } from 'react-dom';
+import { Route, Router, IndexRoute, hashHistory } from 'react-router';
 
-ReactDOM.render(<TodoApp />, document.getElementById('root'));
+import TodoApp from './components/TodoApp';
 
+import styles from './styles/app.scss';
+
+render(
+  <TodoApp />,
+  document.getElementById('app')
+);

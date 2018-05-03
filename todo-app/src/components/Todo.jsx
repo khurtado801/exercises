@@ -4,10 +4,10 @@ import React, { Component } from 'react';
 
 class Todo extends Component {
     render () {
-        let { text } = this.props; // Deconstruct props to text
+        let { id, text } = this.props; // Deconstruct text and id from props
         return (
             <div>
-                {text};
+                {id}. {text};
             </div>
         );
     }
