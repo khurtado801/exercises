@@ -5,7 +5,7 @@ const argv = yargs.options ({
     a: { // 'a' is for address
         demand: true,
         alias: 'address',
-        describe: 'Address to feetch weather for',
+        describe: 'Address to fetch weather for',
         string: true
     } // Object that stores final parsed object that was originally sent through yargs
 })
