@@ -7,6 +7,9 @@ const config = require("./config");
 // Save return result from calling Express as a function
 let app = express();
 
+// Middleware
+app.use(express.static(__dirname + '/public'));
+
 // Route handler for root
 app.get('/', (req, res) => {
 // Respond to request by sending data back, a string
@@ -32,7 +35,7 @@ app.get('/about', (req, res) => {
 app.get('/bad', (req, res) => {
     // Respond to request by sending data back, a string
     res.send({
-        msg: "Unable to fulfill this request..."
+        errorMessage: 'Unable to fulfill this request...'
     })
 })
 
