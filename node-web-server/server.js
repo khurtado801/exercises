@@ -3,7 +3,7 @@ const express = require('express');
 // Load in our config
 const config = require('./config');
 const hbs = require('hbs');
-
+const fs = require('fs');
 // Create new Express app
 // Save return result from calling Express as a function
 let app = express();
@@ -15,6 +15,21 @@ hbs.registerPartials(__dirname + '/views/partials');
 app.set('view engine', 'hbs');
 // Middleware
 app.use(express.static(__dirname + '/public'));
+
+// More middleware
+app.use((req, res, next) => {
+    let now = new Date().toString();
+    let log = `${now}: ${req.method} ${req.url}`;
+
+    console.log(log);
+    fs.appendFile('server.log', log + '\n', (err) => {
+        if (err) {
+            console.log('Unable to append to server.log...')
+        }
+    });
+
+    next();
+});
 
 // Register Handle Bars helper.
 hbs.registerHelper('getCurrentYear', () => {
