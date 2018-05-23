@@ -13,8 +13,7 @@ let app = express();
 hbs.registerPartials(__dirname + '/views/partials');
 // Set various express configs
 app.set('view engine', 'hbs');
-// Middleware
-app.use(express.static(__dirname + '/public'));
+
 
 // More middleware
 app.use((req, res, next) => {
@@ -27,9 +26,16 @@ app.use((req, res, next) => {
             console.log('Unable to append to server.log...')
         }
     });
-
     next();
 });
+
+// Maintenance middleware
+// app.use((req, res, next) => {
+//     res.render('maintenance.hbs')
+// })
+
+// Middleware
+app.use(express.static(__dirname + '/public'));
 
 // Register Handle Bars helper.
 hbs.registerHelper('getCurrentYear', () => {
