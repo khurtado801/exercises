@@ -1,6 +1,6 @@
 caesar = (str, key) => {
     let result = '';
-    for (let i = 0; i < strInput.length; i++) {
+    for (let i = 0; i < str.length; i++) {
         if(str.charCodeAt(i) === 32) {
             continue
         } else if ((str.charCodeAt(i) >= 65) && (str.charCodeAt(i) <= 90)) {
@@ -13,4 +13,4 @@ caesar = (str, key) => {
     return result;
 }
 
-console.log(caesar('The answer is 42', 13));
+console.log(caesar('yes', 3));
