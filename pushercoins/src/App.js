@@ -1,7 +1,7 @@
  import React, { Component } from 'react';
  import './App.css';
- import Today from './Today/Today'
- import History from './History/History'
+ import Today from './Today/Today';
+ import History from './History/History';
 
  class App extends Component {
    render() {
@@ -21,7 +21,7 @@
             </div>
             <section className="results--section">
                 <div className="container">
-                    <h1>PusherCoins is a realtime price information about<br></br> BTC, ETH and LTC.</h1>
+                    <h1>PusherCoins is a realtime price information about<br /> BTC, ETH and LTC.</h1>
                 </div>
                 <div className="results--section__inner">
                     <Today />
