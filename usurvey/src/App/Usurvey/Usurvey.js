@@ -10,8 +10,8 @@ let config = {
     projectId: 'usurvey801',
     storageBucket: 'usurvey801.appspot.com',
     messagingSenderId: '886483618315'
-};
-firebase.initializeApp(config);
+  };
+  firebase.initializeApp(config);
 
 class Usurvey extends Component {
     constructor(props) {
@@ -19,7 +19,7 @@ class Usurvey extends Component {
 
         this.state = {
             uid: uuid.v1(),
-            studentName: 'The Dude',
+            studentName: '',
             answers: {
                 answer1: '',
                 answer2: '',
@@ -64,7 +64,15 @@ class Usurvey extends Component {
     }
 
     questionSubmit = () => {
-        // TODO: work on this
+        // Firebase object access database using ref, if database not found create it
+        // Then create new node '+' which is unique everytime
+        // Set new node object to user answers input
+        firebase.database().ref('uSurvey/'+this.state.uid).set({
+            studentName: this.state.studentName,
+            answers: this.state.answers
+        });
+        // Update state of isSubmitted
+        this.setState({ isSubmitted: true });
     }
 
     render() {

@@ -63,10 +63,10 @@ let removeNote = (title) => {
     // Set notes equal to result of fetchNotes call
     let notes = fetchNotes();
     // Filter out notes...
-    let filteredNotes = notes.filter((note) => {
+    let filteredNotes = notes.filter((note) => note.title !== title);
         // Return notes where title is not equal to argument passed in
         // return note.title !== title
-    })
+
     // if (filteredNotes.length < notes.length) {
     //     console.log('--');
     //     console.log('The note has been removed...')

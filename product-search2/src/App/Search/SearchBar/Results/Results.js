@@ -3,10 +3,15 @@ import React, { Component } from 'react';
 import Result from './Result/Result';
 import './Results.css';
 
-let product = require('../../../products');
-
 class Results extends Component {
+    
+    componentWillReceiveProps(nextProps) {
+        console.log('Results:' + nextProps.query);
+        console.log(nextProps.products);
+    }
+
     render () {
+        console.log(this.props.products);
         return (
             <div className="results">
                 <div className="in-stock">

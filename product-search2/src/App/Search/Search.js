@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import SearchBar from './SearchBar/SearchBar';
 import Results from './SearchBar/Results/Results';
 
-let product = require('../products');
+let products = require('../products');
 
 class Search extends Component {
     constructor(props) {
@@ -24,7 +24,7 @@ class Search extends Component {
             <div>
                 <div className="search">
                     <SearchBar onQuery={this.handleQuery} />
-                    <Results />
+                    <Results products={this.props.products} query={this.state.query} />
                 </div>
             </div>
         );

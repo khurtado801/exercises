@@ -9,9 +9,11 @@ export default class ClickerApp extends Component {
       title: 'React-clicker'
     };
   }
+
   render() {
     return (
       <div>
+
         <Header title={this.state.title} />
         <div className="mt-5">
           <Clicker />
