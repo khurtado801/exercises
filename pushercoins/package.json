@@ -9,6 +9,7 @@
     "express": "^4.16.3",
     "moment": "^2.22.1",
     "pusher": "^2.0.0",
+    "pusher-js": "^4.2.2",
     "react": "^16.4.0",
     "react-dom": "^16.4.0",
     "react-scripts": "1.1.4"
@@ -19,6 +20,7 @@
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
   },
+  "proxy": "http://localhost:5000",
   "devDependencies": {
     "babel-cli": "^6.26.0",
     "babel-core": "^6.26.3",
