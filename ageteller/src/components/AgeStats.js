@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
+import Geek from '../assests/geek.jpeg';
 
 class AgeStats extends Component {
     timeSince = (date) => {
         let today = new Date().getTime();
         let other_date = new Date(date).getTime();
-        let difference = Math.abs(today = other_date);
+        let difference = Math.abs(today - other_date);
         
         let days = Math.floor(difference / (1000 * 3600 * 24));
         let years = Math.floor(days / 365);
@@ -20,6 +21,7 @@ class AgeStats extends Component {
             <div>
                 <h3>{this.props.date}</h3>
                 <h4>Congrats on {this.timeSince(this.props.date)}!</h4>
+                <img src={Geek} alt="Geek" className="Geek" />
             </div>
         );
     }
