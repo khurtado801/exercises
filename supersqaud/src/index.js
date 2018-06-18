@@ -9,6 +9,7 @@ import { addCharacterById } from './actions';
 
 import App from './components/App';
 
+// Create store by defining const and set it equal to store
 const store = createStore(rootReducer);
 console.log('store.getState()', store.getState());
 store.subscribe(() => console.log('store', store.getState()));

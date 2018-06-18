@@ -1,5 +1,6 @@
 // Action type
 export const ADD_CHARACTER = 'ADD_CHARACTER';
+export const REMOVE_CHARACTER = 'REMOVE_CHARACTER';
 
 // Action creator
 export function addCharacterById(id) {
@@ -9,5 +10,15 @@ export function addCharacterById(id) {
         id
     };
     
+    return action;
+}
+
+// Action creator
+export function removeCharacterById(id) {
+    const action = {
+        type: REMOVE_CHARACTER,
+        id
+    };
+
     return action;
 }
