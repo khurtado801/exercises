@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import { Form, FormGroup, FormControl, ControlLabel, Button } from 'react-bootstrap';
 
-// import '../styles/index.css';
-
 class SearchRecipes extends Component {
     render() {
         return (
