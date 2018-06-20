@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { Form, FormGroup, FormControl, ControlLabel, Button } from 'react-bootstrap';
 
+const cors = require('cors');
+
 class SearchRecipes extends Component {
     constructor() {
         super();
@@ -12,8 +14,14 @@ class SearchRecipes extends Component {
     }
 
     search() {
-        const url = 'http://www.recipepuppy.com/api/';
-        console.log('state', this.state);
+        let { ingredients, dish } = this.state;
+        const url = `http://www.recipepuppy.com/api/?i=${ingredients}&q=${dish}`;
+
+        fetch(url, {
+            method: 'GET'
+        })
+        .then(response => response.json())
+        .then(json => console.log('recipes', json));
     }
 
     render() {
