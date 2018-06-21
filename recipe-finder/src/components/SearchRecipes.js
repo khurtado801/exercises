@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Form, FormGroup, FormControl, ControlLabel, Button } from 'react-bootstrap';
-
-const cors = require('cors');
+import { connect } from 'react-redux';
+import { setRecipes } from '../actions';
 
 class SearchRecipes extends Component {
     constructor() {
@@ -30,7 +30,8 @@ class SearchRecipes extends Component {
                 <FormGroup>
                     <ControlLabel>Ingredients</ControlLabel>
                     {' '}
-                    <FormControl type="text"
+                    <FormControl
+                      type="text"
                       placeholder="garlic, chicken"
                       onChange={event => this.setState({ ingredients: event.target.value })}
                     />
@@ -39,7 +40,8 @@ class SearchRecipes extends Component {
                 <FormGroup>
                     <ControlLabel>Dish</ControlLabel>
                     {' '}
-                    <FormControl type="text" 
+                    <FormControl 
+                      type="text" 
                       placeholder="adobo"
                       onChange={event => this.setState({ dish: event.target.value })}
                     />
@@ -51,4 +53,4 @@ class SearchRecipes extends Component {
     }
 }
 
-export default SearchRecipes;
+export default connect(null, { setRecipes })(SearchRecipes);
