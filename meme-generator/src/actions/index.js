@@ -11,8 +11,15 @@ function receiveMemes(json) {
     };
 }
 
-// Action creator
 function fetchMemesJson() {
     return fetch('https://api.imgflip.com/get_memes')
-        .then(response => response.json())
+        .then(response => response.json());
+}
+
+// Action creator
+export function fetchMemes() {
+    return fucntion(dispatch) {
+        return fetchMemesJson()
+            .then(json => dispatch(receiveMemes(json)))
+    }
 }
