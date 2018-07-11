@@ -18,8 +18,8 @@ function fetchMemesJson() {
 
 // Action creator
 export function fetchMemes() {
-    return fucntion(dispatch) {
+    return function(dispatch) {
         return fetchMemesJson()
-            .then(json => dispatch(receiveMemes(json)))
-    }
+            .then(json => dispatch(receiveMemes(json)));
+    };
 }
