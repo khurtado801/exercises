@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
+import MemeItem from './MemeItem';
 import '../styles/index.css';
 
 class App extends Component {
@@ -18,7 +19,10 @@ class App extends Component {
                 {
                     this.props.memes.slice(0, this.state.memeLimit).map((meme, index) => {
                         return (
-                            <h4 key={index}>{meme.name}</h4>
+                            <MemeItem 
+                              key={index}
+                              meme={meme}
+                            />
                         );
                     })
                 }
