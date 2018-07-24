@@ -15,7 +15,8 @@ class App extends Component {
     render() {
         return (
             <div>
-                <h2>Welcome to the Meme Generator!</h2>
+                <h2><u>Welcome to the Meme Generator!</u></h2>
+                <h4><i>Write Some Text</i></h4>
                 {
                     this.props.memes.slice(0, this.state.memeLimit).map((meme, index) => {
                         return (
