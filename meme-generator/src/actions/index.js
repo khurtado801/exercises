@@ -7,7 +7,6 @@ function receiveMemes(json) {
     const { memes } = json.data;
     // Action
     return {
-        // Returned from action
         type: RECEIVE_MEMES,
         memes
     };
@@ -28,9 +27,8 @@ export function fetchMemes() {
 
 // Action creator
 export function newMeme(meme) {
-    // Return
     return {
-        // Returned from action
-        type: NEW_MEME
+        type: NEW_MEME,
+        meme
     };
 }

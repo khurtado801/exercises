@@ -11,7 +11,17 @@ function memes(state = [], action) {
     }
 }
 
+function myMemes(state = [], action) {
+    switch (action.type) {
+        case NEW_MEME:
+            state = [...state, action.meme];
+            return state;
+        default:
+            return state;
+    }
+}
+
 // Root reducer
-const rootReducer = combineReducers({ memes });
+const rootReducer = combineReducers({ memes, myMemes });
 
 export default rootReducer;
