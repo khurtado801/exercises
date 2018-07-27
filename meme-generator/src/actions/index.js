@@ -40,8 +40,8 @@ function newMeme(meme) {
 
 // Action creator
 function postMemeJson(params) {
-    params["username"] = username;
-    params["password"] = password;
+    params['username'] = username;
+    params['password'] = password;
   
     const bodyParams = Object.keys(params).map(key => {
       return encodeURIComponent(key) + '=' + encodeURIComponent(params[key]);
