@@ -1,6 +1,7 @@
 import { ADD_CHARACTER, REMOVE_CHARACTER } from '../actions';
 import { createCharacter } from './helpers';
 
+// Reducer
 function heroes (state = [], action) {
     switch (action.type) {
         case ADD_CHARACTER:
