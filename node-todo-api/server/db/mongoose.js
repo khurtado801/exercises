@@ -3,6 +3,6 @@ var mongoose = require('mongoose');
 // Specify default promise library
 mongoose.Promise = global.Promise;
 // Connect to MongoDB
-mongoose.connect('mongodb://localhost:27017/TodoApp');
+mongoose.connect('mongodb://localhost:27017/TodoApp', { useNewUrlParser: true });
 
 module.exports = { mongoose };
