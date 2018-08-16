@@ -32,7 +32,7 @@ app.post('/todos', (req, res) => { // Post arguments are the URL and callback fu
 	todo.save().then((doc) => { // Callback for success case
 		res.send(doc); // Response sends back document
 	}, (e) => { // Callback for error case
-		res.send(e); // Response sends error back
+		res.status(400).send(e); // Response sends error back
 	});
 });
 
