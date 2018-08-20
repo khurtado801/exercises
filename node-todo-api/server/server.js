@@ -39,3 +39,5 @@ app.post('/todos', (req, res) => { // Post arguments are the URL and callback fu
 app.listen(3000, () => { // App will listen on port 3000, callback provided which will fire once app is up
 	console.log('Listening on port 3000...');
 });
+
+module.exports = {app};
